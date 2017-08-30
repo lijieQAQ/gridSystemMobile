@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjdv.gridSystem.mapper.gridMapper">
+	<resultMap type="com.bjdv.gridSystem.pojo.Grid_Item_Data" id="gridItemDataResultMap">
+		<id column="ITEM_DATA_ID" property="item_data_id" jdbcType="NUMERIC" />
+		<result column="GRID_ID" property="grid_id" jdbcType="NUMERIC" />
+		<result column="DATA_DATE" property="data_date" jdbcType="DATE" />
+		<result column="DATA_VALUE" property="data_value" jdbcType="NUMERIC" />
+	</resultMap>
+</mapper>

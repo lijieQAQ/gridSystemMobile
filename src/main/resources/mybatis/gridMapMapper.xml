@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjdv.gridSystemMobile.mapper.gridMapper">
+	<resultMap type="com.bjdv.gridSystemMobile.pojo.Grid_Map" id="gridMapResultMap">
+		<id column="MAP_ID" property="map_id" jdbcType="NUMERIC" />
+		<result column="GRID_ID" property="grid_id" jdbcType="NUMERIC" />
+		<result column="DISPORDER" property="disporder" jdbcType="NUMERIC" />
+		<result column="LNG" property="lng" jdbcType="NUMERIC" />
+		<result column="LAT" property="lat" jdbcType="NUMERIC" />
+	</resultMap>
+	<select id="getMapByGridId" parameterType="java.lang.String" resultMap="gridMapResultMap">
+		select * from grid_map where grid_id=#{_parameter}
+	</select>
+</mapper>

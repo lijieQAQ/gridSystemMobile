@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjdv.gridSystemMobile.mapper.gridMapper">
+	<resultMap id="sysStaffResultMap" type="com.bjdv.gridSystemMobile.pojo.SysStaff">
+		<id column="STAFF_ID" property="staffId" jdbcType="DECIMAL" />
+		<result column="DEP_ID" property="depId" jdbcType="DECIMAL" />
+		<result column="REGION_ID" property="regionId" jdbcType="DECIMAL" />
+		<result column="WCODE" property="wcode" jdbcType="VARCHAR" />
+		<result column="CTI_CODE" property="ctiCode" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="IS_MANAGER" property="isManager" jdbcType="CHAR" />
+		<result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="SEX" property="sex" jdbcType="VARCHAR" />
+		<result column="BIRTHDAY" property="birthday" jdbcType="TIMESTAMP" />
+		<result column="CON_TEL" property="conTel" jdbcType="VARCHAR" />
+		<result column="CON_MOBILE" property="conMobile" jdbcType="VARCHAR" />
+		<result column="CON_ADDR" property="conAddr" jdbcType="VARCHAR" />
+		<result column="EMAIL" property="email" jdbcType="VARCHAR" />
+		<result column="WEIXIN" property="weixin" jdbcType="VARCHAR" />
+		<result column="QQ" property="qq" jdbcType="VARCHAR" />
+		<result column="CERT_TYPE" property="certType" jdbcType="VARCHAR" />
+		<result column="CERT_CODE" property="certCode" jdbcType="VARCHAR" />
+		<result column="FANCY" property="fancy" jdbcType="VARCHAR" />
+		<result column="STATE" property="state" jdbcType="CHAR" />
+		<result column="STATE_DATE" property="stateDate" jdbcType="TIMESTAMP" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="SKIN" property="skin" jdbcType="VARCHAR" />
+		<result column="ALIAS" property="alias" jdbcType="VARCHAR" />
+		<result column="POSITION" property="position" jdbcType="VARCHAR" />
+		<result column="SMS_FLAG" property="smsFlag" jdbcType="CHAR" />
+		<result column="MESSAGE_FLAG" property="messageFlag" jdbcType="CHAR" />
+		<result column="WARN_TIME" property="warnTime" jdbcType="VARCHAR" />
+		<result column="LOGIN_MODE" property="loginMode" jdbcType="CHAR" />
+		<result column="RING" property="ring" jdbcType="VARCHAR" />
+		<result column="ARRANGE" property="arrange" jdbcType="CHAR" />
+		<result column="STANDBY1" property="standby1" jdbcType="VARCHAR" />
+		<result column="STANDBY2" property="standby2" jdbcType="VARCHAR" />
+		<result column="STANDBY3" property="standby3" jdbcType="VARCHAR" />
+		<result column="TENANT_ID" property="tenantId" jdbcType="DECIMAL" />
+		<result column="LAST_LOG_TIME" property="lastLogTime" jdbcType="TIMESTAMP" />
+		<result column="HEARTBIT_TIME" property="heartbitTime"
+			jdbcType="TIMESTAMP" />
+		<result column="IS_ONLINE" property="isOnline" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="login" resultMap="sysStaffResultMap" parameterType="java.lang.String">
+		select * FROM SYS_STAFF where wcode = #{_parameter} and state='Y'
+	</select>
+</mapper>

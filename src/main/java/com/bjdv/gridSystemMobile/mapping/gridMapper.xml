@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjdv.gridSystemMobile.mapper.gridMapper">
+	<resultMap type="com.bjdv.gridSystemMobile.pojo.Grid" id="gridResultMap">
+		<id column="GRID_ID" property="grid_id" jdbcType="NUMERIC" />
+		<result column="GRID_CODE" property="grid_code" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="TYPE" property="type" jdbcType="CHAR" />
+		<result column="REGION_ID" property="region_id" jdbcType="NUMERIC" />
+		<result column="P_ID" property="p_id" jdbcType="NUMERIC" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="CREATE_DATE" property="create_date" jdbcType="DATE" />
+		<result column="CREATE_STAFF" property="create_staff" jdbcType="NUMERIC" />
+		<result column="STATE" property="state" jdbcType="CHAR" />
+		<result column="STATE_DATE" property="state_date" jdbcType="DATE" />
+		<collection property="itemDataList"
+			ofType="com.bjdv.gridSystem.pojo.Grid_Item_Data" resultMap="gridItemDataResultMap">
+		</collection>
+
+	</resultMap>
+	<select id="getGridList" parameterType="java.util.Map"
+		resultMap="gridResultMap">
+
+		SELECT * FROM
+		(
+		SELECT A.*, ROWNUM RN
+		FROM (select * from GRID g
+		left join
+		GRID_ITEM_DATA gid on g.grid_id=gid.grid_id
+		where 1=1
+		<if test="create_staff!='' and create_staff!=null">
+			and g.create_staff=#{create_staff,jdbcType=VARCHAR}
+		</if>
+		<if test="state!='' and state !=null">
+			and g.state=#{state,jdbcType=CHAR}
+		</if>
+		order by g.create_date DESC
+		) A
+		    <![CDATA[
+             WHERE ROWNUM <= #{end}
+          ]]>
+		)
+		<![CDATA[
+             WHERE RN >= #{start}
+          ]]>
+	</select>
+	<update id="deleteGridById" parameterType="java.lang.String">
+		UPDATE GRID SET STATE
+		= 'N' WHERE grid_id = #{_parameter}
+	</update>
+	<select id="getQuota" resultMap="java.util.HashMap">
+		select pi.item_name,prd.final_score,pr.batch_id,pi.item_id from
+		PF_RESULT pr,PF_RESULT_DETAIL prd,PF_ITEM pi
+		where prd.PF_RESULT_ID = pr.PF_RESULT_ID
+		AND prd.item_id =pi.item_id
+		and pr.TARGET_TYPE='G'
+		and pr.target_id= '1'
+		and pr.batch_id='201603'
+	</select>
+</mapper>

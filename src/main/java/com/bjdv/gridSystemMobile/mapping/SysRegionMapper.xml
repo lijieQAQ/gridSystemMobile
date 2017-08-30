@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjdv.gridSystem.mapper.gridMapper">
+	<resultMap id="sysRegionResultMap" type="com.bjdv.gridSystem.pojo.SysRegion">
+		<id column="REGION_ID" property="regionId" jdbcType="DECIMAL" />
+		<result column="STAFF_ID" property="staffId" jdbcType="DECIMAL" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="LEVEL_CODE" property="levelCode" jdbcType="VARCHAR" />
+		<result column="PID" property="pid" jdbcType="DECIMAL" />
+		<result column="REGION_CODE" property="regionCode" jdbcType="VARCHAR" />
+		<result column="STATE" property="state" jdbcType="CHAR" />
+		<result column="STATE_DATE" property="stateDate" jdbcType="TIMESTAMP" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="SIGN" property="sign" jdbcType="VARCHAR" />
+		<result column="BAK_CODE" property="bakCode" jdbcType="VARCHAR" />
+		<result column="DISPORDER" property="disporder" jdbcType="DECIMAL" />
+		<result column="STANDBY1" property="standby1" jdbcType="VARCHAR" />
+		<result column="STANDBY2" property="standby2" jdbcType="VARCHAR" />
+		<result column="STANDBY3" property="standby3" jdbcType="VARCHAR" />
+		<result column="TENANT_ID" property="tenantId" jdbcType="DECIMAL" />
+		<result column="REF_ID" property="refId" jdbcType="VARCHAR" />
+	</resultMap>
+</mapper>
